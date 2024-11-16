@@ -11,6 +11,7 @@ const validationSchema = Yup.object().shape({
   lastName: Yup.string().required('Ingrese su primer apellido'),
   secondLastName: Yup.string(),
   CI: Yup.string().required('Falta su número de CI'),
+  psi: Yup.string().required('Escriba el nombre del Psicologo usted considere, debe representar a su municipio.'),
   CILetter: Yup.string().oneOf(['V', 'E']).required('Required'),
   fpv: Yup.string().required('Falta su número de FPV'),
   email: Yup.string().email('Invalid email').required('Se requiere un correo electronico válido'),
@@ -68,6 +69,7 @@ export const App = () => {
       email: '',
       celPhone: '',
       address: '',
+      psi: "",
       Rif: null,
     },
     validationSchema,
@@ -246,6 +248,19 @@ export const App = () => {
           className={formik.errors.Rif ? 'input-error' : ''}
         />
         {formik.errors.Rif ? <div className="error-message">{formik.errors.Rif}</div> : null}
+      </div>
+
+      <div>
+        <label htmlFor="psi">Representante a Elegir</label>
+        <input
+          id="psi"
+          name="psi"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.psi}
+          className={formik.errors.psi ? 'input-error' : ''}
+        />
+        {formik.errors.psi ? <div className="error-message">{formik.errors.psi}</div> : null}
       </div>
 
       {!isSubmitting ? <button type="submit">Enviar Voto</button> :<button style={{ backgroundColor: '#FFA500', color: 'white' }} disabled={true}>Enviando Voto</button>

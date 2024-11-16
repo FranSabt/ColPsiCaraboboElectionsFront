@@ -84,6 +84,7 @@ const ElectionFormList = () => {
             secondLastName: form.secondLastName, 
             CI: `${form.CILetter}-${form.CI}`, 
             fpv: form.fpv, 
+            psi: form.psi,
             email: form.email, 
             celPhone: form.celPhone, 
             address: form.address, 
@@ -208,6 +209,7 @@ const ElectionFormList = () => {
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
+                <th>Voto por </th>
                 <th>Anulado</th>
                 <th>Rif</th>
                 <th>Acciones</th>
@@ -224,6 +226,7 @@ const ElectionFormList = () => {
                   <td>{form.email}</td>
                   <td>{form.celPhone}</td>
                   <td>{form.address}</td>
+                  <td>{form.psi}</td>
                   <td>
                     <button
                       onClick={() => handleVoteStatusChange(form.id)}
