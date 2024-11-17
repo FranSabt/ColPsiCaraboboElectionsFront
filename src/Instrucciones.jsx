@@ -1,4 +1,3 @@
-import React from 'react'
 import './Instrucciones.css'
 
 const Instrucciones = () => {
@@ -16,13 +15,15 @@ const Instrucciones = () => {
       <h3>Requisitos para el ejercicio del voto online:</h3>
       <ol>
         <li>Ser Psicólogo con título expedido por una Universidad Nacional.</li>
+        <li>Estar inscrito en ColPsiCarabobo.</li>
         <li>Nro. de FPV asignado.</li>
-        <li>R.I.F. vigente.</li>
+        <li>R.I.F. vigente que indique que vive en el Municipio donde ejercerá su voto.</li>
       </ol>
       
       <h3>Pasos para ejercer el voto online</h3>
       <ol>
         <li>R.I.F. digitalizado.</li>
+        {/*  eslint-disable-next-line react/no-unescaped-entities */}
         <li>Ingresar el link: "Formulario del ejercicio único del voto para elegir representantes de los municipios".</li>
         <li>Completar cada una de las preguntas descritas en el formulario, adjunta el R.I.F., escribe el nombre del Representante de tu Municipio a Elegir y presionar el botón “ENVIAR VOTO”.</li>
         <li>Recibirás un correo de confirmación de tu voto con un código único que hace constar que ejerciste tu voto.</li>

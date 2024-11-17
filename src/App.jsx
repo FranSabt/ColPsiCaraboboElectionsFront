@@ -102,11 +102,24 @@ export const App = () => {
     },
   });
 
+  const isAfter3pm = () => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinutes = now.getMinutes();
+  
+    // Verifica si la hora actual es después de las 3pm
+    if (currentHour > 15 || (currentHour === 15 && currentMinutes > 0)) {
+      return true;
+    }
+    return false;
+  };
+  
+
   return submitted ? (
     <ThankYouMessage />
   ) : (
     <form onSubmit={formik.handleSubmit} className="form-container">
-      <h1>Votaciones de Representates Carabobo 2024</h1>
+      <h1>Votaciones de Representantes Municipales Carabobo 2024</h1>
       {/* <img src={SELLO} alt="Banner" className="banner-image" /> */}
         <img src={SELLO} alt="Banner" style={{ display: 'block', margin: '0 auto 20px', maxWidth: '100%', height: 'auto', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }} />
       <Instrucciones />
@@ -260,7 +273,17 @@ export const App = () => {
         {formik.errors.psi ? <div className="error-message">{formik.errors.psi}</div> : null}
       </div>
 
-      {!isSubmitting ? <button type="submit">Enviar Voto</button> :<button style={{ backgroundColor: '#FFA500', color: 'white' }} disabled={true}>Enviando Voto</button>
+      {!isSubmitting ? 
+      <button 
+        type="submit" disabled={isAfter3pm()} 
+        style={{ padding: '10px 20px', backgroundColor: isAfter3pm() 
+            ? '#ccc' : '#4CAF50', color: 'white', border: 'none', borderRadius: '5px', cursor: isAfter3pm() 
+            ? 'not-allowed' : 'pointer', 
+          }} > ENVIAR VOTO </button>
+      
+      :
+      
+      <button style={{ backgroundColor: '#FFA500', color: 'white' }} disabled={true}>Enviando Voto</button>
     }
     </form>
   );
