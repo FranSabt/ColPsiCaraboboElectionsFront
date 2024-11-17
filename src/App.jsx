@@ -281,18 +281,7 @@ export const App = () => {
         {formik.errors.psi ? <div className="error-message">{formik.errors.psi}</div> : null}
       </div>
 
-      {!isSubmitting ? 
-      <button 
-        type="submit" disabled={isAfter3pm} 
-        style={{ padding: '10px 20px', backgroundColor: isAfter3pm() 
-            ? '#ccc' : '#4CAF50', color: 'white', border: 'none', borderRadius: '5px', cursor: isAfter3pm() 
-            ? 'not-allowed' : 'pointer', 
-          }} > ENVIAR VOTO </button>
-      
-      :
-      
-      <button style={{ backgroundColor: '#FFA500', color: 'white' }} disabled={true}>Enviando Voto</button>
-    }
+       {!isSubmitting ? <button type="submit">Enviar Voto</button> :<button style={{ backgroundColor: '#FFA500', color: 'white' }} disabled={true}>Enviando Voto</button>}
     </form>
   );
 };
