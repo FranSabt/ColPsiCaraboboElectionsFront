@@ -108,7 +108,7 @@ export const App = () => {
     const currentMinutes = now.getMinutes();
   
     // Verifica si la hora actual es después de las 3pm
-    if (currentHour > 15 || (currentHour === 15 && currentMinutes > 0)) {
+    if (currentHour > 6 || (currentHour === 6 && currentMinutes > 0)) {
       return true;
     }
     return false;
@@ -124,7 +124,15 @@ export const App = () => {
         <img src={SELLO} alt="Banner" style={{ display: 'block', margin: '0 auto 20px', maxWidth: '100%', height: 'auto', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }} />
       <Instrucciones />
       <div>
-        <label htmlFor="firstName">Primer Nombre</label>
+       <label htmlFor="firstName">Primer Nombre</label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.firstName}
+          className={formik.errors.firstName ? 'input-error' : ''}
+        />
         {formik.errors.firstName ? <div className="error-message">{formik.errors.firstName}</div> : null}
       </div>
 
@@ -275,7 +283,7 @@ export const App = () => {
 
       {!isSubmitting ? 
       <button 
-        type="submit" disabled={isAfter3pm()} 
+        type="submit" disabled={isAfter3pm} 
         style={{ padding: '10px 20px', backgroundColor: isAfter3pm() 
             ? '#ccc' : '#4CAF50', color: 'white', border: 'none', borderRadius: '5px', cursor: isAfter3pm() 
             ? 'not-allowed' : 'pointer', 
