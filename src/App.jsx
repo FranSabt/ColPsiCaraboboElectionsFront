@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import './App.css';  // Añade esta línea para importar los estilos
 import './Exito.css';
+import Instrucciones from './Instrucciones';
+import SELLO from './assets/COlPSi.jpeg'
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required('Ingrese su primer nombre'),
@@ -105,16 +107,11 @@ export const App = () => {
   ) : (
     <form onSubmit={formik.handleSubmit} className="form-container">
       <h1>Votaciones de Representates Carabobo 2024</h1>
+      {/* <img src={SELLO} alt="Banner" className="banner-image" /> */}
+        <img src={SELLO} alt="Banner" style={{ display: 'block', margin: '0 auto 20px', maxWidth: '100%', height: 'auto', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }} />
+      <Instrucciones />
       <div>
         <label htmlFor="firstName">Primer Nombre</label>
-        <input
-          id="firstName"
-          name="firstName"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.firstName}
-          className={formik.errors.firstName ? 'input-error' : ''}
-        />
         {formik.errors.firstName ? <div className="error-message">{formik.errors.firstName}</div> : null}
       </div>
 
